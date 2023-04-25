@@ -1,0 +1,7 @@
+name: Kaiivoid
+version: ${version}
+main: dev.kugge.kaiivoid.Kaiivoid
+api-version: 1.19
+folia-supported: true
+authors: [kugge]
+description: Fixes void trading without setting chunk-unloads to 0
