@@ -27,16 +27,16 @@ public class VoidWatcher implements Listener {
         if (!Kaiivoid.snapshots.containsKey(player)) return;
 
         MerchantSnapshot snapshot = Kaiivoid.snapshots.get(player);
-        if (shouldReset(snapshot.villager, player)) snapshot.resetMerchant();
+        if (shouldReset(snapshot.villager)) snapshot.resetMerchant();
 
         Kaiivoid.snapshots.remove(player);
     }
 
-    private static boolean shouldReset(Villager villager, Player player) {
-        double distance = player.getSimulationDistance();
-        // Simulate chunk loaded by another player
+    private static boolean shouldReset(Villager villager) {
+        double distance = villager.getWorld().getSimulationDistance();
+        // Simulate chunk loaded by a player
         for (Entity entity : villager.getNearbyEntities(distance, distance, distance))
             if (entity instanceof Player) return false;
-        return villager.getLocation().distance(player.getLocation()) >= distance * 16;
+        return true;
     }
 }
