@@ -1,6 +1,6 @@
 package dev.kugge.kaiivoid;
 
-import dev.kugge.kaiivoid.util.MerchantSnapshot;
+import dev.kugge.kaiivoid.util.MerchantSave;
 import dev.kugge.kaiivoid.watcher.VoidWatcher;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -14,7 +14,7 @@ public class Kaiivoid extends JavaPlugin {
 
     public static Kaiivoid instance;
     public static Logger logger;
-    public static Map<Player, MerchantSnapshot> snapshots = new ConcurrentHashMap<>();
+    public static Map<Player, MerchantSave> snapshots = new ConcurrentHashMap<>();
 
     @Override
     public void onEnable() {

@@ -1,7 +1,7 @@
 package dev.kugge.kaiivoid.watcher;
 
 import dev.kugge.kaiivoid.Kaiivoid;
-import dev.kugge.kaiivoid.util.MerchantSnapshot;
+import dev.kugge.kaiivoid.util.MerchantSave;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Villager;
@@ -17,7 +17,7 @@ public class VoidWatcher implements Listener {
         if (!(event.getInventory().getHolder() instanceof Villager)) return;
         Kaiivoid.snapshots.put(
                 (Player) event.getPlayer(),
-                new MerchantSnapshot((Merchant) event.getInventory().getHolder())
+                new MerchantSave((Merchant) event.getInventory().getHolder())
         );
     }
 
@@ -26,8 +26,8 @@ public class VoidWatcher implements Listener {
         Player player = (Player) event.getPlayer();
         if (!Kaiivoid.snapshots.containsKey(player)) return;
 
-        MerchantSnapshot snapshot = Kaiivoid.snapshots.get(player);
-        if (shouldReset(snapshot.villager)) snapshot.resetMerchant();
+        MerchantSave save = Kaiivoid.snapshots.get(player);
+        if (shouldReset(save.villager)) save.resetMerchant();
 
         Kaiivoid.snapshots.remove(player);
     }
